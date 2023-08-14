@@ -2,14 +2,14 @@ import React from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import classNames from "classnames";
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import "../app/styles.css";
-import F1Logo from "./F1";
+import "../../app/styles.css";
+import F1Logo from "./f1";
 import Link from "next/link";
 import GithubIcon from "./Github";
 
 const Navbar = () => {
   return (
-    <NavigationMenu.Root className="NavigationMenuRoot w-[100%] [&>div>*] flex items-center">
+    <NavigationMenu.Root className="NavigationMenuRoot w-[100%] flex items-center">
       <Link
         className="flex items-center text-red-500 font-semibold absolute left-6"
         href="/"

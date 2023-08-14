@@ -5,7 +5,7 @@ const GithubIcon = () => (
       style={{
         stroke: "none",
         fillRule: "nonzero",
-        fill: "#000",
+        fill: "#FFF",
         fillOpacity: 1,
       }}
     />
