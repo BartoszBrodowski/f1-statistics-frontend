@@ -10,13 +10,12 @@ import { ThemeSwitcher } from "../ThemeSwitcher";
 
 const Navbar = () => {
   return (
-    <NavigationMenu.Root className="NavigationMenuRoot w-[100%] [&>div]:flex-1 flex items-center justify-between p-6">
-      <Link
-        className="flex flex-1 items-center text-red-500 font-semibold"
-        href="/"
-      >
-        <F1Logo /> Stats
-      </Link>
+    <NavigationMenu.Root className="NavigationMenuRoot w-[100%] [&>div]:flex-1 flex items-center justify-between my-6 px-6">
+      <NavigationMenu.Item className="list-none flex-1 text-red-500 font-semibold">
+        <Link className="flex items-center" href="/">
+          <F1Logo /> Stats
+        </Link>
+      </NavigationMenu.Item>
       <NavigationMenu.List className="NavigationMenuList">
         <NavigationMenu.Item className="px-2">
           <NavigationMenu.Trigger className="NavigationMenuTrigger hover:bg-mauve7 dark:hover:bg-red11">
@@ -121,7 +120,7 @@ const Navbar = () => {
       </NavigationMenu.List>
 
       <div className="ViewportPosition">
-        <NavigationMenu.Viewport className="NavigationMenuViewport" />
+        <NavigationMenu.Viewport className="NavigationMenuViewport dark:shadow-none dark:bg-[#222222]" />
       </div>
       <div className="flex flex-1 justify-end">
         <ThemeSwitcher />
@@ -135,7 +134,10 @@ const ListItem = React.forwardRef(
     <li>
       <NavigationMenu.Link asChild>
         <a
-          className={classNames("ListItemLink", className)}
+          className={classNames(
+            "ListItemLink dark:hover:bg-[#1c1c1c]",
+            className
+          )}
           {...props}
           ref={forwardedRef}
         >

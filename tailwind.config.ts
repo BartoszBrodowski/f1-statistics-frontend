@@ -20,12 +20,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        jetblack: "#1b1b1b",
         ...blackA,
         ...mauve,
         ...violet,
         ...purple,
         ...indigo,
         ...red,
+      },
+      boxShadow: {
+        dark: "0px 0px 5px 0px rgba(36, 38, 50, 1);",
       },
     },
   },
