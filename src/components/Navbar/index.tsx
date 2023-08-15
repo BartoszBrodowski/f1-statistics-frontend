@@ -6,19 +6,20 @@ import "../../app/styles.css";
 import F1Logo from "./f1";
 import Link from "next/link";
 import GithubIcon from "./Github";
+import { ThemeSwitcher } from "../ThemeSwitcher";
 
 const Navbar = () => {
   return (
-    <NavigationMenu.Root className="NavigationMenuRoot w-[100%] flex items-center">
+    <NavigationMenu.Root className="NavigationMenuRoot w-[100%] [&>div]:flex-1 flex items-center justify-between p-6">
       <Link
-        className="flex items-center text-red-500 font-semibold absolute left-6"
+        className="flex flex-1 items-center text-red-500 font-semibold"
         href="/"
       >
         <F1Logo /> Stats
       </Link>
       <NavigationMenu.List className="NavigationMenuList">
         <NavigationMenu.Item className="px-2">
-          <NavigationMenu.Trigger className="NavigationMenuTrigger">
+          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:bg-mauve7 dark:hover:bg-red11">
             General <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
@@ -51,7 +52,7 @@ const Navbar = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="px-2">
-          <NavigationMenu.Trigger className="NavigationMenuTrigger">
+          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:bg-maube7 dark:hover:bg-red11">
             Statistics <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
@@ -62,7 +63,7 @@ const Navbar = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="px-2">
-          <NavigationMenu.Trigger className="NavigationMenuTrigger">
+          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:bg-mauve7 dark:hover:bg-red11">
             Github <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
@@ -121,6 +122,9 @@ const Navbar = () => {
 
       <div className="ViewportPosition">
         <NavigationMenu.Viewport className="NavigationMenuViewport" />
+      </div>
+      <div className="flex flex-1 justify-end">
+        <ThemeSwitcher />
       </div>
     </NavigationMenu.Root>
   );
