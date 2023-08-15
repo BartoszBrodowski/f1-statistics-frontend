@@ -1,19 +1,20 @@
 import React from "react";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import classNames from "classnames";
-import { CaretDownIcon } from "@radix-ui/react-icons";
-import "../../app/styles.css";
-import F1Logo from "./f1";
 import Link from "next/link";
-import GithubIcon from "./Github";
+import classNames from "classnames";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { CaretDownIcon } from "@radix-ui/react-icons";
 import { ThemeSwitcher } from "../ThemeSwitcher";
+import F1Logo from "./f1";
+import GithubIcon from "./Github";
+import "../../app/styles.css";
 
 const Navbar = () => {
   return (
     <NavigationMenu.Root className="NavigationMenuRoot w-[100%] [&>div]:flex-1 flex items-center justify-between my-6 px-6">
-      <NavigationMenu.Item className="list-none flex-1 text-red-500 font-semibold">
+      <NavigationMenu.Item className="flex flex-1 text-red-500 font-semibold list-none">
         <Link className="flex items-center" href="/">
-          <F1Logo /> Stats
+          <F1Logo />
+          <p>Stats</p>
         </Link>
       </NavigationMenu.Item>
       <NavigationMenu.List className="NavigationMenuList">
@@ -23,15 +24,15 @@ const Navbar = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
             <ul className="List one">
-              <li style={{ gridRow: "span 3" }}>
+              <li className="row-span-3">
                 <NavigationMenu.Link asChild>
-                  <a className="CalloutF1" href="/">
+                  <Link className="CalloutF1" href="/">
                     <F1Logo />
-                    <div className="CalloutHeading">F1 Statistics</div>
+                    <h1 className="CalloutHeading">F1 Statistics</h1>
                     <p className="CalloutText">
                       Statistics, analysis and conclusions for Formula 1.
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenu.Link>
               </li>
 
@@ -97,17 +98,17 @@ const Navbar = () => {
               </div>
               <li>
                 <NavigationMenu.Link asChild>
-                  <a
+                  <Link
                     className="CalloutGithub bg-gradient-to-br from-white to-slate-900"
                     target="_blank"
                     href="https://github.com/BartoszBrodowski"
                   >
                     <GithubIcon />
-                    <div className="CalloutHeading">Github</div>
+                    <h1 className="CalloutHeading">Github</h1>
                     <p className="CalloutText">
                       Checkout my Github for more projects!
                     </p>
-                  </a>
+                  </Link>
                 </NavigationMenu.Link>
               </li>
             </ul>
@@ -115,12 +116,12 @@ const Navbar = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Indicator className="NavigationMenuIndicator">
-          <div className="Arrow" />
+          <div className="Arrow dark:bg-secondary-black" />
         </NavigationMenu.Indicator>
       </NavigationMenu.List>
 
       <div className="ViewportPosition">
-        <NavigationMenu.Viewport className="NavigationMenuViewport dark:shadow-none dark:bg-[#222222]" />
+        <NavigationMenu.Viewport className="NavigationMenuViewport dark:shadow-none dark:bg-secondary-black" />
       </div>
       <div className="flex flex-1 justify-end">
         <ThemeSwitcher />
@@ -141,7 +142,7 @@ const ListItem = React.forwardRef(
           {...props}
           ref={forwardedRef}
         >
-          <div className="ListItemHeading">{title}</div>
+          <h1 className="ListItemHeading">{title}</h1>
           <p className="ListItemText">{children}</p>
         </a>
       </NavigationMenu.Link>

@@ -66,12 +66,12 @@ p {
 .NavigationMenuContent[data-motion="from-end"] {
   animation-name: enterFromRight;
 }
-/* .NavigationMenuContent[data-motion="to-start"] {
+.NavigationMenuContent[data-motion="to-start"] {
   animation-name: exitToLeft;
-} */
-/* .NavigationMenuContent[data-motion="to-end"] {
+}
+.NavigationMenuContent[data-motion="to-end"] {
   animation-name: exitToRight;
-} */
+}
 @media only screen and (min-width: 600px) {
   .NavigationMenuContent {
     width: auto;

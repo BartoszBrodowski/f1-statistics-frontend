@@ -1,12 +1,5 @@
 const plugin = require("tailwindcss/plugin");
-const {
-  blackA,
-  mauve,
-  violet,
-  indigo,
-  purple,
-  red,
-} = require("@radix-ui/colors");
+const { blackA, mauve, gray, red } = require("@radix-ui/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -20,16 +13,18 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        jetblack: "#1b1b1b",
+        "main-black": "#1b1b1b",
+        "secondary-black": "#222222",
         ...blackA,
         ...mauve,
-        ...violet,
-        ...purple,
-        ...indigo,
+        ...gray,
         ...red,
       },
       boxShadow: {
         dark: "0px 0px 5px 0px rgba(36, 38, 50, 1);",
+      },
+      fontFamily: {
+        quote: ["Times new roman", "serif"],
       },
     },
   },
