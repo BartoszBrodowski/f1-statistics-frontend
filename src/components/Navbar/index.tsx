@@ -1,4 +1,4 @@
-import React from "react";
+import { FC, LegacyRef, forwardRef } from "react";
 import Link from "next/link";
 import classNames from "classnames";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
@@ -8,7 +8,7 @@ import F1Logo from "./f1";
 import GithubIcon from "./Github";
 import "../../app/styles.css";
 
-const Navbar = () => {
+const Navbar: FC = () => {
   return (
     <NavigationMenu.Root className="NavigationMenuRoot w-[100%] [&>div]:flex-1 flex items-center justify-between my-6 px-6">
       <NavigationMenu.Item className="flex flex-1 text-red-500 font-semibold list-none">
@@ -19,7 +19,7 @@ const Navbar = () => {
       </NavigationMenu.Item>
       <NavigationMenu.List className="NavigationMenuList">
         <NavigationMenu.Item className="px-2">
-          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:bg-mauve7 dark:hover:bg-red11">
+          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:cursor-pointer hover:bg-mauve7 dark:hover:bg-red11">
             General <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
@@ -36,7 +36,7 @@ const Navbar = () => {
                 </NavigationMenu.Link>
               </li>
 
-              <ListItem href="" title="Drivers">
+              <ListItem href="/drivers" title="Drivers">
                 Drivers points, race wins, championship statistics etc.
               </ListItem>
               <ListItem href="" title="Constructors">
@@ -52,7 +52,7 @@ const Navbar = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="px-2">
-          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:bg-maube7 dark:hover:bg-red11">
+          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:cursor-pointer hover:bg-maube7 dark:hover:bg-red11">
             Statistics <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
@@ -63,7 +63,7 @@ const Navbar = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="px-2">
-          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:bg-mauve7 dark:hover:bg-red11">
+          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:cursor-pointer hover:bg-mauve7 dark:hover:bg-red11">
             Github <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
@@ -130,8 +130,18 @@ const Navbar = () => {
   );
 };
 
-const ListItem = React.forwardRef(
-  ({ className, children, title, ...props }: any, forwardedRef) => (
+interface ListItemProps {
+  title: string;
+  className?: string;
+  children?: React.ReactNode;
+  [key: string]: any;
+}
+
+const ListItem = forwardRef(
+  (
+    { className, children, title, ...props }: ListItemProps,
+    forwardedRef: LegacyRef<HTMLAnchorElement>
+  ) => (
     <li>
       <NavigationMenu.Link asChild>
         <a

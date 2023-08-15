@@ -1,10 +1,10 @@
-import * as React from "react";
+import { FC } from "react";
 
 interface F1LogoProps {
   className?: string;
 }
 
-const F1Logo = ({ className = "" }: F1LogoProps) => (
+const F1Logo: FC = ({ className = "" }: F1LogoProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"

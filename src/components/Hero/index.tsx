@@ -1,6 +1,7 @@
 import { Quote } from "@radix-ui/themes";
+import { FC } from "react";
 
-const Hero = () => {
+const Hero: FC = () => {
   return (
     <div className="flex gap-12 flex-col justify-center items-center h-screen">
       <div className="flex flex-col items-center gap-2 w-2/3">
