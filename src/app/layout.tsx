@@ -1,11 +1,13 @@
 "use client";
 
 import "./globals.css";
+import "@radix-ui/themes/styles.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import Navbar from "@/components/Navbar";
+import { Theme } from "@radix-ui/themes";
+import { CustomThemeProvider } from "@/components/ThemeProvider";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,10 +27,12 @@ export default function RootLayout({
     <html lang="en">
       <QueryClientProvider client={queryClient}>
         <body className={inter.className + " " + "dark:bg-main-black"}>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Navbar />
-            {children}
-          </ThemeProvider>
+          <CustomThemeProvider attribute="class">
+            <Theme>
+              <Navbar />
+              {children}
+            </Theme>
+          </CustomThemeProvider>
         </body>
       </QueryClientProvider>
     </html>

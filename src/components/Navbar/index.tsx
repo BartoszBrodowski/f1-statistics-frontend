@@ -19,7 +19,7 @@ const Navbar: FC = () => {
       </NavigationMenu.Item>
       <NavigationMenu.List className="NavigationMenuList">
         <NavigationMenu.Item className="px-2">
-          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:cursor-pointer hover:bg-mauve7 dark:hover:bg-red11">
+          <NavigationMenu.Trigger className="NavigationMenuTrigger dark:text-white hover:cursor-pointer hover:bg-mauve7 dark:hover:bg-red11">
             General <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
@@ -52,7 +52,7 @@ const Navbar: FC = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="px-2">
-          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:cursor-pointer hover:bg-maube7 dark:hover:bg-red11">
+          <NavigationMenu.Trigger className="NavigationMenuTrigger dark:text-white hover:cursor-pointer hover:bg-maube7 dark:hover:bg-red11">
             Statistics <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
@@ -63,7 +63,7 @@ const Navbar: FC = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="px-2">
-          <NavigationMenu.Trigger className="NavigationMenuTrigger hover:cursor-pointer hover:bg-mauve7 dark:hover:bg-red11">
+          <NavigationMenu.Trigger className="NavigationMenuTrigger dark:text-white hover:cursor-pointer hover:bg-mauve7 dark:hover:bg-red11">
             Github <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
@@ -152,7 +152,7 @@ const ListItem = forwardRef(
           {...props}
           ref={forwardedRef}
         >
-          <h1 className="ListItemHeading">{title}</h1>
+          <h1 className="ListItemHeading dark:text-mauve8">{title}</h1>
           <p className="ListItemText">{children}</p>
         </a>
       </NavigationMenu.Link>
