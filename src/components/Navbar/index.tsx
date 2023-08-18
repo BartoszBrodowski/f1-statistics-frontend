@@ -1,6 +1,6 @@
 import { FC, LegacyRef, Ref, forwardRef } from "react";
 import { CaretDownIcon } from "@radix-ui/react-icons";
-import { Text, Heading, Box } from "@radix-ui/themes";
+import { Text, Heading, Box, Flex } from "@radix-ui/themes";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
@@ -31,7 +31,7 @@ const Navbar: FC = () => {
                   <Link className="CalloutF1" href="/">
                     <F1Logo />
                     <Heading className="CalloutHeading">F1 Statistics</Heading>
-                    <Text className="CalloutText">
+                    <Text className="dark:text-white">
                       Statistics, analysis and conclusions for Formula 1.
                     </Text>
                   </Link>
@@ -41,7 +41,7 @@ const Navbar: FC = () => {
               <ListItem href="/drivers" title="Drivers">
                 Drivers points, race wins, championship statistics etc.
               </ListItem>
-              <ListItem href="/" title="Constructors">
+              <ListItem href="/constructors" title="Constructors">
                 Team championship titles, all time drivers list, points scored
                 in particular season etc.
               </ListItem>
@@ -77,25 +77,30 @@ const Navbar: FC = () => {
                   href="https://github.com/BartoszBrodowski/f1-statistics-frontend"
                   className="whitespace-pre-line"
                 >
-                  <Text as="p" className="flex flex-col gap-2">
-                    <Text className="font-semibold">
+                  <Flex direction="column" gap="1">
+                    <Text size="3" weight="bold">
                       NextJS, TailwindCSS, Typescript, RadixUI.
                     </Text>
-                    Frontend repository to present stats in an approachable way.
-                  </Text>
+                    <Text size="3" weight="regular">
+                      Frontend repository to present stats in an approachable
+                      way.
+                    </Text>
+                  </Flex>
                 </ListItem>
                 <ListItem
                   title="Backend"
                   target="_blank"
                   href="https://github.com/BartoszBrodowski/f1-statistics-backend"
                 >
-                  <Text as="p" className="flex flex-col gap-2">
-                    <Text className="font-semibold">
+                  <Flex direction="column" gap="1">
+                    <Text size="3" weight="bold">
                       Python, PostgreSQL, Flask, SQLAlchemy, Docker
                     </Text>
-                    Backend repository consisting of a scraper, db injector
-                    class and API.
-                  </Text>
+                    <Text size="3" weight="regular">
+                      Backend repository consisting of a scraper, db injector
+                      class and API.
+                    </Text>
+                  </Flex>
                 </ListItem>
               </Box>
               <li>
@@ -123,7 +128,7 @@ const Navbar: FC = () => {
       </NavigationMenu.List>
 
       <Box className="ViewportPosition">
-        <NavigationMenu.Viewport className="NavigationMenuViewport dark:shadow-none dark:bg-secondary-black" />
+        <NavigationMenu.Viewport className="NavigationMenuViewport dark:shadow-dark dark:bg-secondary-black" />
       </Box>
       <Box className="flex flex-1 justify-end">
         <ThemeSwitcher />

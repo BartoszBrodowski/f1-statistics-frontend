@@ -12,6 +12,7 @@ import {
 import { useQuery } from "@tanstack/react-query";
 import { Card } from "@/components/ui/card";
 import f1Api from "@/utils/axiosConfig";
+import { useTheme } from "next-themes";
 
 interface DriversData {
   nationality: string;
@@ -19,6 +20,7 @@ interface DriversData {
 }
 
 const DriversChart: FC = ({}) => {
+  const { theme, setTheme } = useTheme();
   const { data } = useQuery({
     queryKey: ["drivers", "top", "nationalities"],
     queryFn: async () => {
@@ -47,11 +49,12 @@ const DriversChart: FC = ({}) => {
             axisLine={false}
             tickFormatter={(value) => `${value}`}
           />
-          <Tooltip
-            cursor={{ fill: "transparent" }}
-            contentStyle={{ color: "black" }}
+          <Bar
+            dataKey="count"
+            fill="red"
+            radius={[4, 4, 4, 4]}
+            label={{ fill: theme === "dark" ? "#fff" : "#000" }}
           />
-          <Bar dataKey="count" fill="red" radius={[4, 4, 0, 0]} />
         </BarChart>
       </ResponsiveContainer>
     </Card>

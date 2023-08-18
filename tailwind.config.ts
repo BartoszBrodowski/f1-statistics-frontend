@@ -70,7 +70,7 @@ module.exports = {
         },
       },
       boxShadow: {
-        dark: "0px 0px 5px 0px rgba(36, 38, 50, 1);",
+        dark: "0px 0px 10px 0px rgba(0, 0, 0, 0.2);",
       },
       fontFamily: {
         quote: ["Times new roman", "serif"],
