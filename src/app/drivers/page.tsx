@@ -1,6 +1,6 @@
 import { FC } from "react";
 import Chart from "./Chart";
-import { Text, Heading, Box, Flex, CalloutIcon } from "@radix-ui/themes";
+import { Text, Heading, Box, Flex } from "@radix-ui/themes";
 import FunFactBox from "@/components/FunfactBox";
 import ReadMore from "@/components/ReadMore";
 

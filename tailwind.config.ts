@@ -1,5 +1,12 @@
 const plugin = require("tailwindcss/plugin");
-const { blackA, mauve, gray, red } = require("@radix-ui/colors");
+const {
+  blackA,
+  mauve,
+  gray,
+  red,
+  tomato,
+  crimson,
+} = require("@radix-ui/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -26,6 +33,8 @@ module.exports = {
         ...mauve,
         ...gray,
         ...red,
+        ...tomato,
+        ...crimson,
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

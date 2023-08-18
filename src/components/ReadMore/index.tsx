@@ -26,7 +26,7 @@ const ReadMore: React.FC<ReadMoreProps> = ({ children }) => {
               open: { opacity: 1, height: "auto" },
               collapsed: { opacity: 0, height: 0 },
             }}
-            transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+            transition={{ duration: 0.6, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
             {children}
           </motion.section>
@@ -35,7 +35,7 @@ const ReadMore: React.FC<ReadMoreProps> = ({ children }) => {
       <motion.header
         initial={false}
         className={clsx(
-          "flex items-center gap-1 text-blue-500 cursor-pointer",
+          "flex items-center gap-1 text-blue-500 hover:text-blue-700 transition duration-250 cursor-pointer",
           { "mt-4": expanded }
         )}
         onClick={() => setExpanded(!expanded)}

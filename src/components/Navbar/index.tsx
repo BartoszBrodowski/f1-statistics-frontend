@@ -1,12 +1,14 @@
-import { FC, LegacyRef, forwardRef } from "react";
+import { FC, LegacyRef, Ref, forwardRef } from "react";
+import { CaretDownIcon } from "@radix-ui/react-icons";
+import { Text, Heading, Box } from "@radix-ui/themes";
+import { ThemeSwitcher } from "../ThemeSwitcher";
+import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
 import classNames from "classnames";
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import { CaretDownIcon } from "@radix-ui/react-icons";
-import { ThemeSwitcher } from "../ThemeSwitcher";
 import F1Logo from "./f1";
 import GithubIcon from "./Github";
 import "../../app/styles.css";
+import { Url } from "next/dist/shared/lib/router/router";
 
 const Navbar: FC = () => {
   return (
@@ -14,7 +16,7 @@ const Navbar: FC = () => {
       <NavigationMenu.Item className="flex flex-1 text-red-500 font-semibold list-none">
         <Link className="flex items-center" href="/">
           <F1Logo />
-          <p>Stats</p>
+          <Text>Stats</Text>
         </Link>
       </NavigationMenu.Item>
       <NavigationMenu.List className="NavigationMenuList">
@@ -28,10 +30,10 @@ const Navbar: FC = () => {
                 <NavigationMenu.Link asChild>
                   <Link className="CalloutF1" href="/">
                     <F1Logo />
-                    <h1 className="CalloutHeading">F1 Statistics</h1>
-                    <p className="CalloutText">
+                    <Heading className="CalloutHeading">F1 Statistics</Heading>
+                    <Text className="CalloutText">
                       Statistics, analysis and conclusions for Formula 1.
-                    </p>
+                    </Text>
                   </Link>
                 </NavigationMenu.Link>
               </li>
@@ -39,11 +41,11 @@ const Navbar: FC = () => {
               <ListItem href="/drivers" title="Drivers">
                 Drivers points, race wins, championship statistics etc.
               </ListItem>
-              <ListItem href="" title="Constructors">
+              <ListItem href="/" title="Constructors">
                 Team championship titles, all time drivers list, points scored
                 in particular season etc.
               </ListItem>
-              <ListItem href="" title="Races">
+              <ListItem href="/" title="Races">
                 Races stats including most winning drivers, biggest points
                 scorers and most driven races.
               </ListItem>
@@ -57,7 +59,7 @@ const Navbar: FC = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
             <ul className="List two">
-              <ListItem>To be added</ListItem>
+              <ListItem href="/">To be added</ListItem>
             </ul>
           </NavigationMenu.Content>
         </NavigationMenu.Item>
@@ -68,34 +70,34 @@ const Navbar: FC = () => {
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
             <ul className="List three">
-              <div>
+              <Box>
                 <ListItem
                   title="Frontend"
                   target="_blank"
                   href="https://github.com/BartoszBrodowski/f1-statistics-frontend"
                   className="whitespace-pre-line"
                 >
-                  <p className="flex flex-col gap-2">
-                    <span className="font-semibold">
+                  <Text as="p" className="flex flex-col gap-2">
+                    <Text className="font-semibold">
                       NextJS, TailwindCSS, Typescript, RadixUI.
-                    </span>
+                    </Text>
                     Frontend repository to present stats in an approachable way.
-                  </p>
+                  </Text>
                 </ListItem>
                 <ListItem
                   title="Backend"
                   target="_blank"
                   href="https://github.com/BartoszBrodowski/f1-statistics-backend"
                 >
-                  <p className="flex flex-col gap-2">
-                    <span className="font-semibold">
+                  <Text as="p" className="flex flex-col gap-2">
+                    <Text className="font-semibold">
                       Python, PostgreSQL, Flask, SQLAlchemy, Docker
-                    </span>
+                    </Text>
                     Backend repository consisting of a scraper, db injector
                     class and API.
-                  </p>
+                  </Text>
                 </ListItem>
-              </div>
+              </Box>
               <li>
                 <NavigationMenu.Link asChild>
                   <Link
@@ -104,10 +106,10 @@ const Navbar: FC = () => {
                     href="https://github.com/BartoszBrodowski"
                   >
                     <GithubIcon />
-                    <h1 className="CalloutHeading">Github</h1>
-                    <p className="CalloutText">
+                    <Heading className="CalloutHeading">Github</Heading>
+                    <Text as="p" className="text-mauve4 text-sm leading-5">
                       Checkout my Github for more projects!
-                    </p>
+                    </Text>
                   </Link>
                 </NavigationMenu.Link>
               </li>
@@ -116,16 +118,16 @@ const Navbar: FC = () => {
         </NavigationMenu.Item>
 
         <NavigationMenu.Indicator className="NavigationMenuIndicator">
-          <div className="Arrow dark:bg-secondary-black" />
+          <Box className="Arrow dark:bg-secondary-black" />
         </NavigationMenu.Indicator>
       </NavigationMenu.List>
 
-      <div className="ViewportPosition">
+      <Box className="ViewportPosition">
         <NavigationMenu.Viewport className="NavigationMenuViewport dark:shadow-none dark:bg-secondary-black" />
-      </div>
-      <div className="flex flex-1 justify-end">
+      </Box>
+      <Box className="flex flex-1 justify-end">
         <ThemeSwitcher />
-      </div>
+      </Box>
     </NavigationMenu.Root>
   );
 };
@@ -134,27 +136,33 @@ interface ListItemProps {
   title: string;
   className?: string;
   children?: React.ReactNode;
+  href: Url;
   [key: string]: any;
 }
 
 const ListItem = forwardRef(
   (
-    { className, children, title, ...props }: ListItemProps,
-    forwardedRef: LegacyRef<HTMLAnchorElement>
+    { className, children, title, href, ...props }: ListItemProps,
+    forwardedRef: Ref<HTMLAnchorElement> | undefined
   ) => (
     <li>
       <NavigationMenu.Link asChild>
-        <a
+        <Link
           className={classNames(
             "ListItemLink dark:hover:bg-[#1c1c1c]",
             className
           )}
           {...props}
           ref={forwardedRef}
+          href={href}
         >
-          <h1 className="ListItemHeading dark:text-mauve8">{title}</h1>
-          <p className="ListItemText">{children}</p>
-        </a>
+          <Heading size="4" className="ListItemHeading dark:text-mauve8">
+            {title}
+          </Heading>
+          <Text as="p" className="ListItemText">
+            {children}
+          </Text>
+        </Link>
       </NavigationMenu.Link>
     </li>
   )
