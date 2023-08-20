@@ -22,7 +22,7 @@ const Navbar: FC = () => {
       <NavigationMenu.List className="NavigationMenuList">
         <NavigationMenu.Item className="px-2">
           <NavigationMenu.Trigger className="NavigationMenuTrigger dark:text-white hover:cursor-pointer hover:bg-mauve7 dark:hover:bg-red11">
-            General <CaretDownIcon className="CaretDown" aria-hidden />
+            Statistics <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
             <ul className="List one">
@@ -55,7 +55,7 @@ const Navbar: FC = () => {
 
         <NavigationMenu.Item className="px-2">
           <NavigationMenu.Trigger className="NavigationMenuTrigger dark:text-white hover:cursor-pointer hover:bg-maube7 dark:hover:bg-red11">
-            Statistics <CaretDownIcon className="CaretDown" aria-hidden />
+            Analysis <CaretDownIcon className="CaretDown" aria-hidden />
           </NavigationMenu.Trigger>
           <NavigationMenu.Content className="NavigationMenuContent">
             <ul className="List two">

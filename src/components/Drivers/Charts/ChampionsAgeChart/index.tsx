@@ -1,42 +1,34 @@
 "use client";
 
-import { FC } from "react";
-import {
-  Bar,
-  BarChart,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-  Tooltip,
-} from "recharts";
-import { useQuery } from "@tanstack/react-query";
-import { Card } from "@/components/ui/card";
 import f1Api from "@/utils/axiosConfig";
+import { Card } from "@/components/ui/card";
+import { useQuery } from "@tanstack/react-query";
 import { useTheme } from "next-themes";
+import { FC } from "react";
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 
-interface DriversData {
-  nationality: string;
+interface ChampionsAgeData {
+  category: string;
   count: number;
 }
 
-const DriversChart: FC = ({}) => {
+const ChampionsAgeChart: FC = ({}) => {
   const { theme, setTheme } = useTheme();
   const { data } = useQuery({
-    queryKey: ["drivers", "top", "nationalities"],
+    queryKey: ["drivers", "champion", "average", "age"],
     queryFn: async () => {
       const { data } = await f1Api.get(
-        "http://localhost:5000/drivers/top/nationalities"
+        "http://127.0.0.1:5000/drivers/championships/average_age"
       );
-      return data.slice(0, 7) as DriversData[];
+      return data as ChampionsAgeData[];
     },
   });
-
   return (
     <Card className="w-2/5 py-6 pr-8">
       <ResponsiveContainer width="100%" height={350}>
         <BarChart data={data}>
           <XAxis
-            dataKey="nationality"
+            dataKey="category"
             stroke="#888888"
             fontSize={12}
             tickLine={false}
@@ -61,4 +53,4 @@ const DriversChart: FC = ({}) => {
   );
 };
 
-export default DriversChart;
+export default ChampionsAgeChart;
