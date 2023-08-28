@@ -6,7 +6,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Theme } from "@radix-ui/themes";
 import { CustomThemeProvider } from "@/components/ThemeProvider";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });

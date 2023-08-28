@@ -1,11 +1,14 @@
 "use client";
 
-import f1Api from "@/utils/axiosConfig";
+import ChartError from "@/components/ChartError";
 import { Card } from "@/components/ui/card";
+import f1Api from "@/utils/axiosConfig";
 import { useQuery } from "@tanstack/react-query";
+import { AxiosError } from "axios";
 import { useTheme } from "next-themes";
 import { FC } from "react";
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
+import ChartSkeleton from "../ChartSkeleton";
 
 interface ChampionsAgeData {
   category: string;
@@ -14,15 +17,24 @@ interface ChampionsAgeData {
 
 const ChampionsAgeChart: FC = ({}) => {
   const { theme, setTheme } = useTheme();
-  const { data } = useQuery({
-    queryKey: ["drivers", "champion", "average", "age"],
+  const { isError, isLoading, data, error, refetch } = useQuery<
+    ChampionsAgeData[],
+    AxiosError
+  >({
+    queryKey: ["championsAge"],
     queryFn: async () => {
-      const { data } = await f1Api.get(
+      const response = await f1Api.get(
         "http://127.0.0.1:5000/drivers/championships/average_age"
       );
-      return data as ChampionsAgeData[];
+      if (response.status !== 200)
+        return Promise.reject(new AxiosError(response.statusText));
+      return response.data;
     },
+    retry: false,
   });
+  if (isLoading) return <ChartSkeleton />;
+
+  if (isError) return <ChartError refetch={refetch} />;
   return (
     <Card className="w-2/5 py-6 pr-8">
       <ResponsiveContainer width="100%" height={350}>

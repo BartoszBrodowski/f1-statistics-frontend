@@ -31,7 +31,7 @@ const Navbar: FC = () => {
                   <Link className="CalloutF1" href="/">
                     <F1Logo />
                     <Heading className="CalloutHeading">F1 Statistics</Heading>
-                    <Text className="dark:text-white">
+                    <Text className="text-white">
                       Statistics, analysis and conclusions for Formula 1.
                     </Text>
                   </Link>
