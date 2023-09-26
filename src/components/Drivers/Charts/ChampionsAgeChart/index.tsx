@@ -9,6 +9,7 @@ import { useTheme } from "next-themes";
 import { FC } from "react";
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
 import ChartSkeleton from "../ChartSkeleton";
+import Chart from "../Chart";
 
 interface ChampionsAgeData {
   category: string;
@@ -32,36 +33,16 @@ const ChampionsAgeChart: FC = ({}) => {
     },
     retry: false,
   });
-  if (isLoading) return <ChartSkeleton />;
-
-  if (isError) return <ChartError refetch={refetch} />;
   return (
-    <Card className="w-2/5 py-6 pr-8">
-      <ResponsiveContainer width="100%" height={350}>
-        <BarChart data={data}>
-          <XAxis
-            dataKey="category"
-            stroke="#888888"
-            fontSize={12}
-            tickLine={false}
-            axisLine={false}
-          />
-          <YAxis
-            stroke="#888888"
-            fontSize={12}
-            tickLine={false}
-            axisLine={false}
-            tickFormatter={(value) => `${value}`}
-          />
-          <Bar
-            dataKey="count"
-            fill="red"
-            radius={[4, 4, 4, 4]}
-            label={{ fill: theme === "dark" ? "#fff" : "#000" }}
-          />
-        </BarChart>
-      </ResponsiveContainer>
-    </Card>
+    <Chart
+      isLoading={isLoading}
+      isError={isError}
+      refetch={refetch}
+      data={data}
+      XDataKey="category"
+      BarDataKey="count"
+      theme={theme}
+    />
   );
 };
 
