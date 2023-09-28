@@ -1,5 +1,5 @@
 import { FC } from "react";
-import NationalitiesChart from "../Charts/NationalitiesChart";
+import NationalitiesChart from "@/components/Charts/NationalitiesChart";
 import { Box, Flex, Heading, ScrollArea, Text } from "@radix-ui/themes";
 import ReadMore from "@/components/ReadMore";
 import FunFactBox from "@/components/FunfactBox";

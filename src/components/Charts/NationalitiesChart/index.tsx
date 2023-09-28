@@ -13,13 +13,15 @@ interface NationalitiesData {
 
 const NationalitiesChart: FC = ({}) => {
   const { theme, setTheme } = useTheme();
-  const { isLoading, isError, data, refetch } = useQuery({
+  const { isLoading, isError, data, refetch } = useQuery<NationalitiesData[]>({
     queryKey: ["drivers", "top", "nationalities"],
     queryFn: async () => {
       const { data } = await f1Api.get("/drivers/top/nationalities");
-      return data.slice(0, 7) as NationalitiesData[];
+      return data.slice(0, 7);
     },
+    retry: false,
   });
+  console.log("Nationalities", data);
   return (
     <Chart
       isLoading={isLoading}

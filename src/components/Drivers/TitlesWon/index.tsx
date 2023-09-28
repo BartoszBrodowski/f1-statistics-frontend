@@ -1,20 +1,20 @@
 import { FC } from "react";
-import ChampionsAgeChart from "@/components/Charts/ChampionsAgeChart";
 import { Box, Flex, Heading, ScrollArea, Text } from "@radix-ui/themes";
+import TitlesWonChart from "@/components/Charts/TitlesWonChart";
 import ReadMore from "@/components/ReadMore";
 import FunFactBox from "@/components/FunfactBox";
 
-const ChampionsAge: FC = ({}) => {
+const TitlesWon: FC = ({}) => {
   return (
     <Box className="flex gap-8 justify-center items-center min-h-screen [&>*]:h-full">
       <Flex direction="column" gap="4" pl="6" className="w-[45%]">
         <Heading size="8" className="dark:text-white">
-          Champions Average Age
+          Titles Won
         </Heading>
         <Box className="text-gray9">
           <Heading size="5">
-            The chart on the left shows the top 7 nationalities with the most
-            drivers in Formula 1 history.
+            Chart shows the amount of drivers that won the championship
+            particular number of times.
           </Heading>
         </Box>
         <ReadMore>
@@ -40,9 +40,9 @@ const ChampionsAge: FC = ({}) => {
           </ScrollArea>
         </ReadMore>
       </Flex>
-      <ChampionsAgeChart />
+      <TitlesWonChart />
     </Box>
   );
 };
 
-export default ChampionsAge;
+export default TitlesWon;

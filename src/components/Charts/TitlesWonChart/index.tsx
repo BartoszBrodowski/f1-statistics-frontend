@@ -1,31 +1,27 @@
 "use client";
 
-import ChartError from "@/components/ChartError";
-import { Card } from "@/components/ui/card";
 import f1Api from "@/utils/axiosConfig";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useTheme } from "next-themes";
 import { FC } from "react";
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import ChartSkeleton from "../ChartSkeleton";
 import Chart from "../Chart";
 
-interface ChampionsAgeData {
-  category: string;
-  count: number;
+interface TitlesWonData {
+  drivers_amount: number;
+  titles: number;
 }
 
-const ChampionsAgeChart: FC = ({}) => {
+const TitlesWonChart: FC = ({}) => {
   const { theme, setTheme } = useTheme();
-  const { isError, isLoading, data, error, refetch } = useQuery<
-    ChampionsAgeData[],
+  const { isError, isLoading, data, refetch } = useQuery<
+    TitlesWonData[],
     AxiosError
   >({
-    queryKey: ["championsAge"],
+    queryKey: ["titlesWon"],
     queryFn: async () => {
       const response = await f1Api.get(
-        "http://127.0.0.1:5000/drivers/championships/average_age"
+        "/drivers/championships/most_titles/amount"
       );
       if (response.status !== 200)
         return Promise.reject(new AxiosError(response.statusText));
@@ -33,17 +29,18 @@ const ChampionsAgeChart: FC = ({}) => {
     },
     retry: false,
   });
+  console.log("Titles won", data);
   return (
     <Chart
+      data={data}
       isLoading={isLoading}
       isError={isError}
       refetch={refetch}
-      data={data}
-      XDataKey="category"
-      BarDataKey="count"
+      XDataKey="titles"
+      BarDataKey="drivers_amount"
       theme={theme}
     />
   );
 };
 
-export default ChampionsAgeChart;
+export default TitlesWonChart;
